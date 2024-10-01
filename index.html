@@ -35,52 +35,52 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 
-  <script>
-    $(document).ready(function() {
-       $("#contact-form").submit(function(event) {
-          // Evitar el comportamiento por defecto del formulario
-          event.preventDefault();
-    
-          // Mostrar la animación de "loading"
-          $(".loading").show();
-    
-          // Obtener los datos del formulario
-          var formData = {
-             name: $("input#sender_name").val(),
-             email: $("input#sender_email").val(),
-             subject: $("input#subject").val(),  // Capturar el valor del campo de Asunto
-             message: $("textarea#message_content").val()
-          };
-    
-          // Enviar el formulario usando AJAX
-          $.ajax({
-             url: "https://formspree.io/f/xeqwvvne",
-             method: "POST",
-             data: formData,
-             dataType: "json",
-             success: function(response) {
-                // Ocultar la animación de "loading"
-                $(".loading").hide();
-    
-                // Verifica si la respuesta es exitosa
-                if (response.ok) {
-                   // Mostrar el mensaje de éxito y ocultar el de error
-                   $(".sent-message").show();
-                   
-                   // Limpiar los campos del formulario
-                   $("input#sender_name").val("");
-                   $("input#sender_email").val("");
-                   $("input#subject").val("");  // Limpiar el campo de Asunto
-                   $("textarea#message_content").val("");
-                } else {
-                   // Mostrar mensaje de error si la respuesta no es exitosa
-                }
-             },
-          });
-       });
-    });
-    
-     </script>
+    <script>
+$(document).ready(function() {
+   $("#contact-form").submit(function(event) {
+      // Evitar el comportamiento por defecto del formulario
+      event.preventDefault();
+
+      // Mostrar la animación de "loading"
+      $(".loading").show();
+
+      // Obtener los datos del formulario
+      var formData = {
+         name: $("input#sender_name").val(),
+         email: $("input#sender_email").val(),
+         subject: $("input#subject").val(),  // Capturar el valor del campo de Asunto
+         message: $("textarea#message_content").val()
+      };
+
+      // Enviar el formulario usando AJAX
+      $.ajax({
+         url: "https://formspree.io/f/xeqwvvne",
+         method: "POST",
+         data: formData,
+         dataType: "json",
+         success: function(response) {
+            // Ocultar la animación de "loading"
+            $(".loading").hide();
+
+            // Verifica si la respuesta es exitosa
+            if (response.ok) {
+               // Mostrar el mensaje de éxito y ocultar el de error
+               $(".sent-message").show();
+               
+               // Limpiar los campos del formulario
+               $("input#sender_name").val("");
+               $("input#sender_email").val("");
+               $("input#subject").val("");  // Limpiar el campo de Asunto
+               $("textarea#message_content").val("");
+            } else {
+               // Mostrar mensaje de error si la respuesta no es exitosa
+            }
+         },
+      });
+   });
+});
+
+ </script>
 
 </head>
 
