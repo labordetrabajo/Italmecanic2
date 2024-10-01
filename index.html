@@ -34,6 +34,54 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+  <script>
+    $(document).ready(function() {
+       $("#contact-form").submit(function(event) {
+          // Evitar el comportamiento por defecto del formulario
+          event.preventDefault();
+    
+          // Mostrar la animación de "loading"
+          $(".loading").show();
+    
+          // Obtener los datos del formulario
+          var formData = {
+             name: $("input#sender_name").val(),
+             email: $("input#sender_email").val(),
+             subject: $("input#subject").val(),  // Capturar el valor del campo de Asunto
+             message: $("textarea#message_content").val()
+          };
+    
+          // Enviar el formulario usando AJAX
+          $.ajax({
+             url: "https://formspree.io/f/xeqwvvne",
+             method: "POST",
+             data: formData,
+             dataType: "json",
+             success: function(response) {
+                // Ocultar la animación de "loading"
+                $(".loading").hide();
+    
+                // Verifica si la respuesta es exitosa
+                if (response.ok) {
+                   // Mostrar el mensaje de éxito y ocultar el de error
+                   $(".sent-message").show();
+                   
+                   // Limpiar los campos del formulario
+                   $("input#sender_name").val("");
+                   $("input#sender_email").val("");
+                   $("input#subject").val("");  // Limpiar el campo de Asunto
+                   $("textarea#message_content").val("");
+                } else {
+                   // Mostrar mensaje de error si la respuesta no es exitosa
+                }
+             },
+          });
+       });
+    });
+    
+     </script>
+
 </head>
 
 <body class="index-page">
@@ -52,10 +100,8 @@
         <ul>
           <li><a href="#hero" class="active">Inicio</a></li>
           <li><a href="#about">Quienes Somos</a></li>
-          <li><a href="#services">Servicios</a></li>
+          <li><a href="#featured-services">Servicios</a></li>
           <li><a href="#portfolio">Productos</a></li>
-          
-          
           </li>
           <li><a href="#contact">Contacto</a></li>
         </ul>
@@ -67,7 +113,7 @@
     </div>
   </header>
   
-  <a class="floating-whatsapp-button" href="https://wa.me/1562631035" target="_blank" class="btn-1">
+  <a class="floating-whatsapp-button" href="https://wa.me/1522392704" target="_blank" class="btn-1">
     <img src="./assets/img/whatsapp-logo.png" alt="WhatsApp" />
   </a>
   <main class="main">
@@ -240,7 +286,7 @@
                 <div class="icon">
                   <i class="bi bi-broadcast"></i>
                 </div>
-                <a href="service-details.html" class="stretched-link">
+                <a href="service-detailsModernizacion.html" class="stretched-link">
                   <h3>Modernización</h3>
                 </a>
                 <p> Mejoramos la eficiencia, la seguridad y la apariencia de tus elevadores para adaptarlos a los
@@ -258,7 +304,7 @@
                 <div class="icon">
                   <i class="bi bi-easel"></i>
                 </div>
-                <a href="service-details.html" class="stretched-link">
+                <a href="service-detailsreparacion.html" class="stretched-link">
                   <h3>Mantenimiento y Reparación</h3>
                 </a>
                 <p>Nos encargamos de realizar todas las reparaciones necesarias para funcionamiento eficiente y seguro de los equipos de elevación</p>
@@ -453,8 +499,8 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
               <img src="assets/img/masonry-portfolio/masonry-portfolio-2.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>Product 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
+                <h4>Control de Maniobra Frecuencia Variable</h4>
+                <p>Regula la velocidad de ascensores mediante variadores, ofreciendo arranques suaves y mayor eficiencia energética.</p>
                 <a href="assets/img/masonry-portfolio/masonry-portfolio-2.jpg" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
@@ -464,7 +510,7 @@
               <img src="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Salva Escalaera</h4>
-                <p>Lorem ipsum, dolor sit</p>
+                <p> Dispositivo motorizado diseñado para ayudar a personas con movilidad reducida</p>
                 <a href="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
@@ -474,7 +520,7 @@
               <img src="assets/img/masonry-portfolio/masonry-portfolio-4.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Monta Vehiculos</h4>
-                <p>Lorem ipsum, dolor sit</p>
+                <p>Ascensor robusto diseñado para elevar y trasladar automóviles entre diferentes niveles de un estacionamiento o taller</p>
                 <a href="assets/img/masonry-portfolio/masonry-portfolio-4.jpg" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
@@ -483,8 +529,8 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
               <img src="assets/img/masonry-portfolio/masonry-portfolio-5.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>Product 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
+                <h4>Control de Maniobra Hidráulico Con Descenso Automático</h4>
+                <p>Gestiona el movimiento de ascensores hidráulicos, permitiendo un descenso suave sin consumo de energía adicional</p>
                 <a href="assets/img/masonry-portfolio/masonry-portfolio-5.jpg" title="Product 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
@@ -494,7 +540,7 @@
               <img src="assets/img/masonry-portfolio/masonry-portfolio-6.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Monta Platos</h4>
-                <p>Lorem ipsum, dolor sit</p>
+                <p>Pequeño ascensor diseñado para transportar alimentos, vajilla u otros objetos ligeros entre diferentes pisos de un edificio</p>
                 <a href="assets/img/masonry-portfolio/masonry-portfolio-6.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
@@ -504,27 +550,19 @@
               <img src="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Monta Carga</h4>
-                <p>Lorem ipsum, dolor sit</p>
+                <p>Elevación utilizado para transportar mercancías o cargas pesadas entre diferentes niveles de un edificio</p>
                 <a href="assets/img/masonry-portfolio/masonry-portfolio-7.jpg" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="assets/img/masonry-portfolio/masonry-portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Product 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="assets/img/masonry-portfolio/masonry-portfolio-8.jpg" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
+         
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <img src="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Rampa</h4>
-                <p>Lorem ipsum, dolor sit</p>
+                <p>Permite el acceso seguro de personas con movilidad reducida, facilitando el ascenso y descenso automatizado en edificios</p>
                 <a href="assets/img/masonry-portfolio/masonry-portfolio-9.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
@@ -542,80 +580,7 @@
     
 
 
-    <!-- Faq Section -->
-    <section id="faq" class="faq section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Preguntas Frecuentes</h2>
-        
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row faq-item" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-5 d-flex">
-            <i class="bi bi-question-circle"></i>
-            <h4>Non consectetur a erat nam at lectus urna duis?</h4>
-          </div>
-          <div class="col-lg-7">
-            <p>
-              Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-            </p>
-          </div>
-        </div><!-- End F.A.Q Item-->
-
-        <div class="row faq-item" data-aos="fade-up" data-aos-delay="200">
-          <div class="col-lg-5 d-flex">
-            <i class="bi bi-question-circle"></i>
-            <h4>Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?</h4>
-          </div>
-          <div class="col-lg-7">
-            <p>
-              Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim.
-            </p>
-          </div>
-        </div><!-- End F.A.Q Item-->
-
-        <div class="row faq-item" data-aos="fade-up" data-aos-delay="300">
-          <div class="col-lg-5 d-flex">
-            <i class="bi bi-question-circle"></i>
-            <h4>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?</h4>
-          </div>
-          <div class="col-lg-7">
-            <p>
-              Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus.
-            </p>
-          </div>
-        </div><!-- End F.A.Q Item-->
-
-        <div class="row faq-item" data-aos="fade-up" data-aos-delay="400">
-          <div class="col-lg-5 d-flex">
-            <i class="bi bi-question-circle"></i>
-            <h4>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h4>
-          </div>
-          <div class="col-lg-7">
-            <p>
-              Aperiam itaque sit optio et deleniti eos nihil quidem cumque. Voluptas dolorum accusantium sunt sit enim. Provident consequuntur quam aut reiciendis qui rerum dolorem sit odio. Repellat assumenda soluta sunt pariatur error doloribus fuga.
-            </p>
-          </div>
-        </div><!-- End F.A.Q Item-->
-
-        <div class="row faq-item" data-aos="fade-up" data-aos-delay="500">
-          <div class="col-lg-5 d-flex">
-            <i class="bi bi-question-circle"></i>
-            <h4>Tempus quam pellentesque nec nam aliquam sem et tortor consequat?</h4>
-          </div>
-          <div class="col-lg-7">
-            <p>
-              Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
-            </p>
-          </div>
-        </div><!-- End F.A.Q Item-->
-
-      </div>
-
-    </section><!-- /Faq Section -->
+ 
 
     <!-- Contact Section -->
     <section id="contact" class="contact section light-background">
@@ -632,27 +597,28 @@
           <div class="col-lg-6 ">
             <div class="row gy-4">
 
-              <div class="col-lg-12">
+             <!--  <div class="col-lg-12">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
                   <i class="bi bi-geo-alt"></i>
                   <h3>Address</h3>
                   <p>A108 Adam Street, New York, NY 535022</p>
                 </div>
-              </div><!-- End Info Item -->
+              </div>-->
 
               <div class="col-md-6">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
                   <i class="bi bi-telephone"></i>
-                  <h3>Call Us</h3>
-                  <p>+1 5589 55488 55</p>
+                  <h3 style="color: #13a753">Teléfono (AR +54)</h3>
+                  <p style="color: #13a753">1562631035</p>
                 </div>
               </div><!-- End Info Item -->
 
               <div class="col-md-6">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
                   <i class="bi bi-envelope"></i>
-                  <h3>Email Us</h3>
-                  <p>info@example.com</p>
+                  <h3 style="color: #13a753;">Email</h3>
+
+                  <p style="color: #13a753;">lucaslaborde.trabajo@gmail.com</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -660,36 +626,30 @@
           </div>
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Nombre" required="">
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Mail" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Asunto" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="4" placeholder="Mensaje" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Enviar</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
+   <form id="contact-form" action="https://formspree.io/f/xeqwvvne" method="POST" class="php-email-form">
+      <div class="row gy-4">
+         <div class="col-md-6">
+            <input type="text" name="name" id="sender_name" class="form-control" placeholder="NOMBRE" required="">
+         </div>
+         <div class="col-md-6">
+            <input type="text" name="subject" id="subject" class="form-control" placeholder="ASUNTO" required="">
+         </div>
+         <div class="col-md-6">
+            <input type="email" class="form-control" id="sender_email" name="email" placeholder="CORREO" required="">
+         </div>
+         <div class="col-md-12">
+            <textarea class="form-control" name="message" id="message_content" rows="4" placeholder="MENSAJE" required=""></textarea>
+         </div>
+         <div class="col-md-12 text-center">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Su Mensaje fue enviado, ¡Gracias!</div>
+            <button type="submit">Enviar Mensaje</button>
+         </div>
+      </div>
+   </form>
+</div>
+         
 
         </div>
 
@@ -704,11 +664,10 @@
       <h3 class="sitename">ITALMECANIC</h3>
       <p>Elevamos tus expectativas</p>
       <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
+       
         <a href=""><i class="bi bi-facebook"></i></a>
         <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-skype"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
+    
       </div>
       <div class="copyright">
        
